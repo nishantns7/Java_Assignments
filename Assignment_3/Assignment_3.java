@@ -1,6 +1,6 @@
 import java.io.*;
 
-class Ping {
+class PingMedian {
 	public static void main(String[] args)throws IOException {
 		BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter the number of times to ping");
