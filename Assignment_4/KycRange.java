@@ -27,15 +27,15 @@ class KycRange {
 		System.out.println(RangeFinder(entryDate, currentDate, n, formatter));
 	}
 
-/**
-* Prints out a range of possible dates for the user to sign the KYC forms for each set of signup-current date pairs passed to the method.
-* Prints the date in dd-MM-yyyy format
-* 
-* @param entryDate an array containing all the signup dates in the input
-* @param currentDate an array containing all the current dates in the input
-* @param n integer containing the number of entries
-* @param formatter DateTimeFormatter object containing the format for date storage
-*/
+	/**
+	* Prints out a range of possible dates for the user to sign the KYC forms for each set of signup-current date pairs passed to the method.
+	* Prints the date in dd-MM-yyyy format
+	* 
+	* @param entryDate an array containing all the signup dates in the input
+	* @param currentDate an array containing all the current dates in the input
+	* @param n integer containing the number of entries
+	* @param formatter DateTimeFormatter object containing the format for date storage
+	*/
 	public static String RangeFinder(LocalDate[] entryDate, LocalDate[] currentDate, int n, DateTimeFormatter formatter) {
 		String range = "";
 		for (int i = 0; i < n; i++) {
