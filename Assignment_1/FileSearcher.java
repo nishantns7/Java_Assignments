@@ -1,8 +1,15 @@
 import java.io.*;		
 import java.util.regex.*;
 
-class Search {
-	
+/**
+* Searches through all directories and sub-directories to locate files which conform to the regular expression input by the user.
+* Then returns the absolute path of all the files found to be matching the regular expression
+*/
+
+class FileSearcher {
+
+	static String result = "";
+		
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));		//Initializing the buffered reader
 		while(true) {		//Repeats execution until user aborts
@@ -13,19 +20,30 @@ class Search {
 			else {
 				File[] files= new File("/home/zadmin/").listFiles();		//Creates an array of files in /home/zadmin/
 				Pattern exp = Pattern.compile(input);		//sets the regular expression as the one input by the user
-				fileIterator(files, exp);		//Calls the function to search through the files in the current dir
+				System.out.println(fileIterator(files, exp));		//Calls the function to search through the files in the current dir
 			}
 		}
 	}
-	public static void fileIterator(File[] files, Pattern exp) {
+	
+	/*
+	* Takes the file list in a directory and the regular expression as the arguments and searches for matches within that directory.
+	* Recursively calls itself if a directory is encountered within the current directory
+	* Returns the list of matching files
+	* @param files an array of File type containing the files of the current directory
+	* @param exp an object of the Pattern class containing the regular expression to be matched against
+	*/
+	
+	public static String fileIterator(File[] files, Pattern exp) {
 		for(File file: files) {		//iterates through each file in the directory
 			if(file.isDirectory())		//checks if the current file is a sub-directory
 				fileIterator(file.listFiles(), exp);		//calls the function to search through files in the sub dir
 			else {
 				Matcher m = exp.matcher(file.getName());		//Compares the file name with the regular expression
-				if(m.matches())
-					System.out.println(file.getAbsolutePath());		//prints the full path if the name matches
+				if(m.matches()) {
+					result = result + file.getAbsolutePath() + "\n";		//prints the full path if the name matches
+				}
 			}
 		}
+		return result;
 	}
 }
