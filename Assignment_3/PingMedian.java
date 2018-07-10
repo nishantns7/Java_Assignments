@@ -40,34 +40,38 @@ class PingMedian {
 	*/
 	
 	public static double pingMedianFinder(int n, String site)throws IOException {
-		Process p = Runtime.getRuntime().exec("ping -c " + n + " " + site);
-		BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-		String s = "" , pingResult = "", time = "";
-		double ping[] = new double[n];
-		int c = 0;
-		while ((s = br.readLine()) != null) {
-			pingResult += s;
-		}
-		String[] fields = pingResult.split(" " , 0);
-		for(String i : fields) {
-			if(i.contains("time=")) {
-				time=i.substring(5);
-				if(time.contains(".")) {
-					ping[c] = Double.parseDouble(time);
-					c++;
-				}
-				else {
-					ping[c] = (double)Integer.parseInt(time);
-					c++;
+		if(site != null) {
+			Process p = Runtime.getRuntime().exec("ping -c " + n + " " + site);
+			BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String s = "" , pingResult = "", time = "";
+			double ping[] = new double[n];
+			int c = 0;
+			while ((s = br.readLine()) != null) {
+				pingResult += s;
+			}
+			String[] fields = pingResult.split(" " , 0);
+			for(String i : fields) {
+				if(i.contains("time=")) {
+					time=i.substring(5);
+					if(time.contains(".")) {
+						ping[c] = Double.parseDouble(time);
+						c++;
+					}
+					else {
+						ping[c] = (double)Integer.parseInt(time);
+						c++;
+					}
 				}
 			}
+			Arrays.sort(ping);
+			double median;
+			if(n % 2 == 0)
+				median = (ping[n/2-1] + ping[n/2]) / 2;
+			else
+				median = ping[n/2];
+			return median;
 		}
-		Arrays.sort(ping);
-		double median;
-		if(n % 2 == 0)
-			median = (ping[n/2-1] + ping[n/2]) / 2;
 		else
-			median = ping[n/2];
-		return median;
+			throw new NullPointerException("Input has a null value.");
 	}
 }
