@@ -40,7 +40,7 @@ class KycRange {
 		String range = "";
 		for (int i = 0; i < n; i++) {
 			if(entryDate[i] == null || currentDate[i] == null)
-				throw new NullPointerException("Input has a null value.");
+				throw new IllegalArgumentException("Dates cannot have a null value.");
 			if (entryDate[i].isAfter(currentDate[i]) || ChronoUnit.DAYS.between(entryDate[i], currentDate[i]) < 336)
 				range += "No range\n";
 			else {

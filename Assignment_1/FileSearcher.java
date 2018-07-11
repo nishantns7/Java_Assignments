@@ -35,10 +35,10 @@ class FileSearcher {
 	
 	public static String fileIterator(File[] files, Pattern exp) {
 		if(exp == null)
-			throw new NullPointerException("Pattern object has null value.");
+			throw new IllegalArgumentException("Pattern object should not have null value.");
 		for(File file: files) {		//iterates through each file in the directory
 			if(file == null)
-				throw new NullPointerException("File object has null value.");
+				throw new IllegalArgumentException("File object should not have null value.");
 			if(file.isDirectory())		//checks if the current file is a sub-directory
 				fileIterator(file.listFiles(), exp);		//calls the function to search through files in the sub dir
 			else {

@@ -28,7 +28,7 @@ class AlphabetCheck {
 	
 	public static boolean alphaCheck(String str) {
 		if(str == null) {
-			throw new NullPointerException("Input has a null value.");
+			throw new IllegalArgumentException("Input should not have a null value.");
 		}
 		HashMap<Character, Boolean> alpha = new HashMap<>();		//Declaring hash table to hold alphabets and their occurence
 		for(char i : str.toCharArray()) {		//Converting string to array of characters and iterating over it
