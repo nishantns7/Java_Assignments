@@ -72,6 +72,6 @@ class PingMedian {
 			return median;
 		}
 		else
-			throw new IllegalArgumentException("Site name should not be a null value.");
+			throw new IllegalArgumentException("Site address should not be a null value.");
 	}
 }
