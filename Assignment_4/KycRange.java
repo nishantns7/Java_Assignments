@@ -24,7 +24,7 @@ class KycRange {
 			entryDate[i] = LocalDate.parse(entries[0] , formatter);				//Storing the first half of the strings as the signup dates
 			currentDate[i] = LocalDate.parse(entries[1] , formatter);				//Storing the second half of the strings as the current dates
 		}
-		System.out.println(RangeFinder(entryDate, currentDate, n, formatter));
+		System.out.println(rangeFinder(entryDate, currentDate, n, formatter));
 	}
 
 	/**
@@ -36,7 +36,7 @@ class KycRange {
 	* @param n integer containing the number of entries
 	* @param formatter DateTimeFormatter object containing the format for date storage
 	*/
-	public static String RangeFinder(LocalDate[] entryDate, LocalDate[] currentDate, int n, DateTimeFormatter formatter) {
+	public static String rangeFinder(LocalDate[] entryDate, LocalDate[] currentDate, int n, DateTimeFormatter formatter) {
 		String range = "";
 		for (int i = 0; i < n; i++) {
 			if(entryDate[i] == null || currentDate[i] == null)
