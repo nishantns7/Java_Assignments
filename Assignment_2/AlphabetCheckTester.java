@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 public class AlphabetCheckTester {
 	
 	@Test
-	public void tester() {
+	public void alphaCheckTest() {
 		AlphabetCheck obj = new AlphabetCheck();
 		assertTrue(obj.alphaCheck("The quick brown fox jumps over the lazy dog"));
 	}

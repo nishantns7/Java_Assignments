@@ -11,7 +11,7 @@ import java.util.regex.*;
 public class FileSearcherTester {
 	
 	@Test
-	public void Tester()throws IOException {
+	public void fileIteratorTest()throws IOException {
 		File[] files = new File("/home/zadmin/").listFiles();
 		Pattern exp1 = Pattern.compile("..");
 		Pattern exp2 = Pattern.compile("tcpdump.txt");

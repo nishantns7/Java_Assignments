@@ -9,7 +9,7 @@ import java.time.Period;
 public class KycRangeTester {
 	
 	@Test
-	public void tester() {
+	public void rangeFinderTest() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		LocalDate entryDate[] = new LocalDate[5];
 		LocalDate currentDate[] = new LocalDate[5];
@@ -24,6 +24,6 @@ public class KycRangeTester {
 		currentDate[3] = LocalDate.parse("04-04-2016" , formatter);
 		entryDate[4] = LocalDate.parse("04-04-2015" , formatter);
 		currentDate[4] = LocalDate.parse("15-03-2016" , formatter);
-		assertEquals(obj.RangeFinder(entryDate , currentDate , 5 , formatter),"16-06-2017 27-06-2017\n05-01-2017 06-03-2017\nNo range\n05-03-2016 04-04-2016\n05-03-2016 15-03-2016\n");
+		assertEquals(obj.rangeFinder(entryDate , currentDate , 5 , formatter),"16-06-2017 27-06-2017\n05-01-2017 06-03-2017\nNo range\n05-03-2016 04-04-2016\n05-03-2016 15-03-2016\n");
 	}
 }

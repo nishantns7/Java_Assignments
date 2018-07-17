@@ -10,7 +10,7 @@ import java.io.*;
 public class PingMedianTester {
 	
 	@Test
-	public void tester()throws IOException {
+	public void pingMedianFinderTest()throws IOException {
 		PingMedian obj = new PingMedian();
 		assertEquals(((Object)obj.pingMedianFinder(3 , "www.google.com")).getClass().getSimpleName() , "Double");
 	}
